@@ -1,1 +1,29 @@
+1. Preparación y Seguridad
+Antes de tocar cualquier componente, asegúrate de cumplir con estos tres puntos:
 
+Apagado total: Desconecta el cable de corriente y todos los periféricos.
+
+Estática: Toca una parte metálica del chasis (o usa una pulsera antiestática) para descargar la electricidad de tu cuerpo, ya que podrías quemar un componente con una chispa invisible.
+
+Herramientas: Necesitarás un destornillador Phillips (de cruz), aire comprimido y una brocha suave.
+
+2. Apertura del Chasis
+Ubica los tornillos en el panel lateral izquierdo (visto desde el frente).
+
+Desliza o retira la tapa para exponer la placa base (motherboard) y los demás componentes.
+
+3. Limpieza de Componentes Clave
+No es necesario desarmar cada pieza pequeña, pero enfócate en estas áreas:
+
+Ventiladores: El polvo se acumula en las aspas. Importante: Sujeta el ventilador con un dedo para que no gire mientras le aplicas aire comprimido; si gira a gran velocidad por el aire, puede generar corriente y dañar la placa.
+
+Disipador de calor: Es el bloque de metal sobre el procesador. Límpialo a fondo con aire comprimido.
+
+Ranuras y puertos: Pasa la brocha suavemente por las ranuras de la memoria RAM y los puertos traseros.
+
+4. Reensamblaje
+Una vez que el interior se vea despejado:
+
+Coloca la tapa lateral y asegúrala con sus tornillos.
+
+Conecta los cables y enciende el equipo para verificar que todos los ventiladores giren correctamente.
