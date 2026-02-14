@@ -59,7 +59,7 @@ function ensamblar(parte) {
       estado.innerText = "🎉 ¡PC ensamblada correctamente!";
     }
   } else {
-    estado.innerText = "❌ Orden incorrecto, intenta desde el inicio";
+    estado.innerText = "Orden incorrecto, intenta desde el inicio";
     paso = 0;
   }
 }
@@ -80,3 +80,17 @@ function reiniciarJuego() {
   actualizarPasoVisual();
   document.getElementById("estado").innerText = "Juego reiniciado 🔄";
 }
+function actualizarProgreso() {
+  const porcentaje = (paso / ordenCorrecto.length) * 100;
+  document.getElementById("barraProgreso").style.width = porcentaje + "%";
+  document.getElementById("estado").innerText =
+    paso === ordenCorrecto.length
+      ? "¡PC ensamblada correctamente!"
+      : "Paso actual: " + (paso + 1);
+}
+
+document.getElementById("formulario").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("mensajeFinal").innerText =
+    "Registro completado. ¡Sigue practicando!";
+});
