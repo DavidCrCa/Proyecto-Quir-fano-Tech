@@ -7,41 +7,80 @@
 </head>
 <body>
 
-<h1>Quirófano Tech</h1>
-<h2>Partes de la PC</h2>
+<div class="slide">
 
-<ul class="menu">
-  <li onclick="mostrarInfo('placa')">Primer paso: Placa Madre</li>
-  <li onclick="mostrarInfo('cpu')">Procesador (CPU)</li>
-  <li onclick="mostrarInfo('ram')">Memoria RAM</li>
-  <li onclick="mostrarInfo('disco')">Disco Duro / SSD</li>
-  <li onclick="mostrarInfo('fuente')">Fuente de Poder</li>
-</ul>
+  <header>
+    <h1>Quirófano Tech</h1>
+    <p>Aprende y arma la PC correctamente</p>
+  </header>
 
-<h2>Arma la PC en orden correcto</h2>
-<p id="estado">Paso actual: 1</p>
+  <!-- SECCIÓN INFORMACIÓN -->
+  <section class="panel">
 
-<ul class="menu">
-  <li onclick="ensamblar('placa')">Placa Madre</li>
-  <li onclick="ensamblar('cpu')">CPU</li>
-  <li onclick="ensamblar('ram')">RAM</li>
-  <li onclick="ensamblar('disco')">Disco</li>
-  <li onclick="ensamblar('fuente')">Fuente</li>
-</ul>
+    <h2>Explorar Componentes</h2>
 
-<!-- Ventana emergente -->
-  
+    <div class="grid">
+      <div class="card" onclick="mostrarInfo('placa')">Placa Madre</div>
+      <div class="card" onclick="mostrarInfo('cpu')">CPU</div>
+      <div class="card" onclick="mostrarInfo('ram')">RAM</div>
+      <div class="card" onclick="mostrarInfo('disco')">Disco / SSD</div>
+      <div class="card" onclick="mostrarInfo('fuente')">Fuente</div>
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN JUEGO -->
+  <section class="panel">
+
+    <h2>Ensamblaje Correcto</h2>
+    <p id="estado">Paso actual: 1</p>
+
+    <div class="progreso-contenedor">
+      <div id="barraProgreso" class="barra-progreso"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card" onclick="ensamblar(event,'placa')">Placa</div>
+      <div class="card" onclick="ensamblar(event,'cpu')">CPU</div>
+      <div class="card" onclick="ensamblar(event,'ram')">RAM</div>
+      <div class="card" onclick="ensamblar(event,'disco')">Disco</div>
+      <div class="card" onclick="ensamblar(event,'fuente')">Fuente</div>
+    </div>
+
+  </section>
+
+  <!-- FORMULARIO FINAL -->
+  <section class="panel">
+
+    <h2>Verificación Final</h2>
+
+    <form id="formulario">
+      <input type="text" placeholder="Tu nombre" required>
+
+      <label class="check">
+        <input type="checkbox" required>
+        Confirmo que conozco el orden correcto
+      </label>
+
+      <button type="submit">Finalizar</button>
+    </form>
+
+    <p id="mensajeFinal"></p>
+
+  </section>
+
+</div>
+
+<!-- MODAL -->
 <div id="modal" class="modal oculto">
   <div class="modal-contenido">
-    <span class="cerrar" onclick="cerrarModal()">X</span>
+    <span class="cerrar" onclick="cerrarModal()">✖</span>
     <h3 id="titulo"></h3>
-    <img id="imagen" src="" alt="pieza pc">
+    <img id="imagen">
     <p id="descripcion"></p>
   </div>
 </div>
 
-
 <script src="script.js"></script>
 </body>
 </html>
-
