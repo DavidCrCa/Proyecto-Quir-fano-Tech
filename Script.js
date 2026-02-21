@@ -4,35 +4,37 @@ function mostrarInfo(parte) {
   const imagen = document.getElementById("imagen");
   const modal = document.getElementById("modal");
 
-  if (parte === "cpu") {
-    titulo.innerText = "Procesador (CPU)";
-    descripcion.innerText = "Se coloca en el zócalo de la placa madre, alineando las marcas y asegurándolo con la palanca.";
-    imagen.src = "https://t3.ftcdn.net/jpg/01/20/19/10/360_F_120191062_GiuDkiHSY1ObTgAofwJ5kp1s9uB6ldlr.jpg";
-  }
+  const info = {
+    cpu: {
+      titulo: "Procesador (CPU)",
+      texto: "Se coloca alineando las marcas y asegurándolo con cuidado.",
+      img: "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_CPU.jpg"
+    },
+    ram: {
+      titulo: "Memoria RAM",
+      texto: "Se inserta presionando hasta que encajen los seguros.",
+      img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/RAM_module.jpg"
+    },
+    disco: {
+      titulo: "Disco Duro / SSD",
+      texto: "Se instala y conecta con cable de datos y energía.",
+      img: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Solid-state-drive.jpg"
+    },
+    placa: {
+      titulo: "Placa Madre",
+      texto: "Es la base donde se conectan todos los componentes.",
+      img: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Motherboard.jpg"
+    },
+    fuente: {
+      titulo: "Fuente de Poder",
+      texto: "Distribuye la energía a todos los componentes.",
+      img: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Power_supply_unit.jpg"
+    }
+  };
 
-  if (parte === "ram") {
-    titulo.innerText = "Memoria RAM";
-    descripcion.innerText = "Se inserta en las ranuras de memoria presionando hasta que los seguros laterales encajen.";
-    imagen.src = "https://compubit.com.co/wp-content/uploads/2023/04/Porque-es-importante-la-memoria-RAM-2-3-1024x535.jpg";
-  }
-
-  if (parte === "disco") {
-    titulo.innerText = "Disco Duro / SSD";
-    descripcion.innerText = "Se instala en la bahía correspondiente y se conecta con cable SATA y energía.";
-    imagen.src = "https://ss628.liverpool.com.mx/xl/1108422323.jpg";
-  }
-
-  if (parte === "placa") {
-    titulo.innerText = "Placa Madre";
-    descripcion.innerText = "Se fija al gabinete con tornillos y se conectan todos los componentes principales.";
-    imagen.src = "https://periodicotecno.com.mx/wp-content/uploads/2023/12/placa-madre.jpg";
-  }
-
-  if (parte === "fuente") {
-    titulo.innerText = "Fuente de Poder";
-    descripcion.innerText = "Se atornilla al gabinete y distribuye energía a todos los componentes.";
-    imagen.src = "https://pcmartcolombia.com/wp-content/uploads/2020/09/PSU-004-1-min-2048x2048.jpg";
-  }
+  titulo.innerText = info[parte].titulo;
+  descripcion.innerText = info[parte].texto;
+  imagen.src = info[parte].img;
 
   modal.classList.remove("oculto");
 }
@@ -42,55 +44,38 @@ function cerrarModal() {
 }
 
 let ordenCorrecto = ["placa", "cpu", "ram", "disco", "fuente"];
+let paso = 0;
 
-// Si ya había progreso guardado, lo carga
-let paso = localStorage.getItem("pasoJuego")
-  ? parseInt(localStorage.getItem("pasoJuego"))
-  : 0;
-
-function ensamblar(parte) {
+function ensamblar(event, parte) {
   const estado = document.getElementById("estado");
 
   if (parte === ordenCorrecto[paso]) {
     paso++;
-    estado.innerText = "Correcto 👌 Paso actual: " + (paso + 1);
+    event.target.classList.add("correcto");
+    event.target.style.pointerEvents = "none";
+    actualizarProgreso();
 
     if (paso === ordenCorrecto.length) {
-      estado.innerText = "🎉 ¡PC ensamblada correctamente!";
+      estado.innerText = "¡PC ensamblada correctamente!";
+    } else {
+      estado.innerText = "Paso actual: " + (paso + 1);
     }
   } else {
-    estado.innerText = "Orden incorrecto, intenta desde el inicio";
-    paso = 0;
+    event.target.classList.add("incorrecto");
+    setTimeout(() => {
+      event.target.classList.remove("incorrecto");
+    }, 400);
+    estado.innerText = "Orden incorrecto";
   }
 }
-function actualizarPasoVisual() {
-const pasoTexto = document.getElementById("pasoActual");
 
-if (paso < ordenCorrecto.length) {
-  pasoTexto.innerText = "Paso actual: " + (paso + 1) + 
-    " → Sigue: " + ordenCorrecto[paso].toUpperCase();
-} else {
-  pasoTexto.innerText = " ¡PC ensamblada!";
-}
-}
-actualizarPasoVisual()
-function reiniciarJuego() {
-  paso = 0;
-  localStorage.removeItem("pasoJuego");
-  actualizarPasoVisual();
-  document.getElementById("estado").innerText = "Juego reiniciado 🔄";
-}
 function actualizarProgreso() {
   const porcentaje = (paso / ordenCorrecto.length) * 100;
   document.getElementById("barraProgreso").style.width = porcentaje + "%";
-  document.getElementById("estado").innerText =
-    paso === ordenCorrecto.length
-      ? "¡PC ensamblada correctamente!"
-      : "Paso actual: " + (paso + 1);
 }
 
 document.getElementById("formulario").addEventListener("submit", function(e){
   e.preventDefault();
   document.getElementById("mensajeFinal").innerText =
-    "Registro completado. ¡Sigue practicando!";
+    "Registro completado. Excelente trabajo";
 });
