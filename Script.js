@@ -3,7 +3,7 @@ function mostrarInfo(parte) {
   const descripcion = document.getElementById("descripcion");
   const imagen = document.getElementById("imagen");
   const modal = document.getElementById("modal");
-
+ 
   const info = {
     cpu: {
       titulo: "Procesador (CPU)",
