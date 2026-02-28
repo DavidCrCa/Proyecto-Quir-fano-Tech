@@ -8,7 +8,7 @@
 body {
   height: 100vh;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
+  color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,13 +38,13 @@ header h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 50px;
   margin-top: 10px;
 }
 
 .card {
-  background: #1abc9c;
-  padding: 12px 20px;
+  background: #829300;
+  padding: 20px 20px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -52,7 +52,7 @@ header h1 {
 }
 
 .card:hover {
-  background: #16a085;
+  background: #620027;
   transform: translateY(-3px);
 }
 
@@ -63,7 +63,7 @@ header h1 {
 .progreso-contenedor {
   width: 60%;
   height: 15px;
-  background: #555;
+  background: #a6dbf9;
   margin: 10px auto;
   border-radius: 10px;
   overflow: hidden;
@@ -102,7 +102,7 @@ button {
 }
 
 button:hover {
-  background: #16a085;
+  background: #2b005b;
 }
 
 /* Modal */
@@ -150,3 +150,4 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
 }
+
