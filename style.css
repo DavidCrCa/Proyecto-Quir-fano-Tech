@@ -143,3 +143,10 @@ button:hover {
 .oculto {
   display: none;
 }
+
+body { 
+  border: 10px solid #535455;  
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
